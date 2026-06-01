@@ -132,6 +132,10 @@ jupyter lab
 Full end-to-end notebook with SHAP values:  
 [Link to be added after submission]
 
+## Tableau Dashboard
+Interactive bias audit dashboard:  
+[Triagegeist — Emergency Triage Bias Audit](https://public.tableau.com/views/TriagegeistEmergencyTriageBiasAudit/BiasAuditDashboard)
+
 ---
 
 ## Roadmap
