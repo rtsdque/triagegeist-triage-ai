@@ -1,11 +1,9 @@
 # Triagegeist — Emergency Triage Acuity Prediction & Demographic Bias Audit
 
-**Competition:** [Triagegeist — AI in Emergency Triage](https://www.kaggle.com/competitions/triagegeist)  
+**Competition:** [Triagegeist](https://www.kaggle.com/competitions/triagegeist)  
 **Organizer:** Laitinen-Fredriksson Foundation, Helsinki  
-**Author:** [Your Name]  
+**Author:** Sadat Tarique 
 **Version:** V1 — Synthetic ED Data + NHAMCS Real-World Validation
-
----
 
 ## Overview
 
@@ -22,29 +20,6 @@ real US emergency department data from the NHAMCS 2018-2022 survey.
 - Cross-dataset finding: Uninsured patients face elevated undertriage risk in both datasets
 - New finding in real data: Female patients undertriaged at 24.1% vs 21.6% for males
 
----
-
-## Repository Structure
-triagegeist/
-├── data/
-│   ├── train.csv                    # Competition training data (80,000 patients)
-│   ├── test.csv                     # Competition test data (20,000 patients)
-│   ├── chief_complaints.csv         # Free-text triage narratives
-│   ├── patient_history.csv          # 25 binary comorbidity flags
-│   ├── sample_submission.csv        # Submission format
-│   └── nhamcs_data_2018_22.csv      # NHAMCS real US ED data (58,124 visits)
-├── notebooks/
-│   ├── 01_eda.ipynb                 # Exploratory data analysis
-│   ├── 02_modeling.ipynb            # XGBoost classifier
-│   ├── 03_bias_analysis.ipynb       # Demographic bias audit (synthetic)
-│   ├── 04_nhamcs_eda.ipynb          # NHAMCS data exploration
-│   └── 05_nhamcs_bias.ipynb         # NHAMCS bias analysis & cross-dataset comparison
-├── outputs/                         # Generated charts and CSV results
-├── requirements.txt
-└── README.md
-
----
-
 ## Datasets
 
 | Dataset | Source | Records | Access |
@@ -53,32 +28,27 @@ triagegeist/
 | NHAMCS 2018-2022 | CDC / Kaggle (reaper0ai) | 58,124 | Public |
 | MIMIC-IV-ED | PhysioNet | ~200,000 | Credentialed (V2) |
 
----
-
 ## Methodology
 
 ### 1. Exploratory Data Analysis
-- Clinical validity check — vital signs degrade cleanly ESI 1→5
-- Demographic analysis — 8 language groups, 5 insurance types, 4 age groups
-- Missingness analysis — BP missing only in low-acuity patients
+- Clinical validity check, with vitals stabilizing as ESI increases
+- Demographic analysis showcasing 8 language groups, 5 insurance types and 4 age groups
+- Missingness analysis, such as BP missing only in low-acuity patients, which points toward data that's usually omitted for stable patients
 
 ### 2. Predictive Modeling
 - XGBoost multiclass classifier (ESI 1–5)
 - 58 features: vitals, demographics, comorbidities, triage context
-- Early stopping at iteration 336, validation log-loss: 0.311
 - SHAP values for clinical interpretability
 
 ### 3. Demographic Bias Audit (Synthetic Data)
-- Undertriage defined as: model predicts higher acuity than assigned
+- Undertriage is when the model predicts higher acuity than assigned
 - Analysis across language, insurance, sex, and age group
-- Compound risk: age + language combinations
+- Risks compound for patients with more unique age and language combinations
 
 ### 4. NHAMCS Real-World Validation
 - Independent XGBoost model trained on 58,124 real US ED visits
 - Bias patterns compared across race, insurance, and sex
 - Cross-dataset comparison of undertriage signals
-
----
 
 ## Key Findings
 
@@ -104,9 +74,7 @@ triagegeist/
 Uninsured patients face elevated undertriage risk in **both** datasets — 
 a consistent signal across synthetic Finnish and real US emergency department data.
 
----
-
-## Setup & Reproducibility
+## Project Setup
 
 ### Requirements
 ```bash
@@ -126,8 +94,6 @@ jupyter lab
 - NHAMCS data: [Kaggle dataset](https://www.kaggle.com/datasets/reaper0ai/nhamcs-2018-22)
 - Place all files in `data/` folder
 
----
-
 ## Kaggle Notebook
 Full end-to-end notebook with SHAP values:  
 [Link to be added after submission]
@@ -136,14 +102,14 @@ Full end-to-end notebook with SHAP values:
 Interactive bias audit dashboard:  
 [Triagegeist — Emergency Triage Bias Audit](https://public.tableau.com/views/TriagegeistEmergencyTriageBiasAudit/BiasAuditDashboard)
 
----
+## Dashboards
+- **Tableau:** [Interactive Bias Audit Dashboard](https://public.tableau.com/views/TriagegeistEmergencyTriageBiasAudit/BiasAuditDashboard)
+- **Power BI:** `dashboards/triagegeist_bias_dashboard.pbix` — two-page report covering synthetic Finnish ED and NHAMCS real US ED validation
 
 ## Roadmap
 
 - **V1 (current):** Synthetic ED data + NHAMCS validation
 - **V2 (planned):** Add MIMIC-IV-ED validation (pending PhysioNet access)
-
----
 
 ## License
 Competition and educational use only.  
