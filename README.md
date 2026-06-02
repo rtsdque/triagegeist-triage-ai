@@ -1,19 +1,19 @@
 # Triagegeist — Emergency Triage Acuity Prediction & Demographic Bias Audit
 
 **Competition:** [Triagegeist](https://www.kaggle.com/competitions/triagegeist)  
-**Organizer:** Laitinen-Fredriksson Foundation, Helsinki  
-**Author:** Sadat Tarique 
+**Organizer:** Laitinen-Fredriksson Foundation
+**Author:** Sadat Tarique
 **Version:** V1 — Synthetic ED Data + NHAMCS Real-World Validation
 
 ## Overview
 
-This project builds an XGBoost classifier predicting emergency triage acuity (ESI 1–5) 
-from patient intake data, then conducts a systematic demographic bias audit identifying 
+This project builds an XGBoost classifier predicting emergency triage acuity
+from patient intake data, which then conducts a systematic demographic bias audit identifying 
 which patient groups are systematically undertriaged. Findings are validated against 
 real US emergency department data from the NHAMCS 2018-2022 survey.
 
 **Key Results:**
-- 85.9% validation accuracy on synthetic data, 0.86 weighted F1
+- 85.9% validation accuracy on synthetic data
 - 96% recall on ESI 1 (critical) patients
 - Overall undertriage rate: 5.27% (synthetic), 22.93% (NHAMCS real data)
 - Highest risk group: Pediatric / Somali-speaking patients at 7.2% (synthetic)
@@ -56,7 +56,7 @@ real US emergency department data from the NHAMCS 2018-2022 survey.
 | Finding | Detail |
 |---|---|
 | Model accuracy | 85.9% on 16,000 held-out patients |
-| ESI 1 recall | 96% — critical patients almost never missed |
+| ESI 1 recall | 96% with critical patients almost never missed |
 | Top features | NEWS2 score (32%), GCS (28%), pain score (10%) |
 | Highest undertriage risk | Pediatric / Somali: 7.2% |
 | Language pattern | Russian, Arabic, Estonian speakers above average |
@@ -65,7 +65,7 @@ real US emergency department data from the NHAMCS 2018-2022 survey.
 ### NHAMCS Real US ED Data
 | Finding | Detail |
 |---|---|
-| Model accuracy | 54.4% — real data is harder to predict |
+| Model accuracy | 54.4% which means real data is harder to predict |
 | Highest undertriage risk | Self-pay (uninsured): 29.3% |
 | Race pattern | Black/African American: 24.3% vs Asian: 15.7% |
 | Sex pattern | Female: 24.1% vs Male: 21.6% |
@@ -98,10 +98,6 @@ jupyter lab
 Full end-to-end notebook with SHAP values:  
 [Link to be added after submission]
 
-## Tableau Dashboard
-Interactive bias audit dashboard:  
-[Triagegeist — Emergency Triage Bias Audit](https://public.tableau.com/views/TriagegeistEmergencyTriageBiasAudit/BiasAuditDashboard)
-
 ## Dashboards
 - **Tableau:** [Interactive Bias Audit Dashboard](https://public.tableau.com/views/TriagegeistEmergencyTriageBiasAudit/BiasAuditDashboard)
 - **Power BI:** `dashboards/triagegeist_bias_dashboard.pbix` — two-page report covering synthetic Finnish ED and NHAMCS real US ED validation
@@ -113,5 +109,5 @@ Interactive bias audit dashboard:
 
 ## License
 Competition and educational use only.  
-Triagegeist dataset: Non-Commercial Research License — Laitinen-Fredriksson Foundation.  
-NHAMCS: Public domain — CDC/NCHS.
+Triagegeist dataset: Non-Commercial Research License, Laitinen-Fredriksson Foundation.  
+NHAMCS: Public domain, CDC/NCHS.
