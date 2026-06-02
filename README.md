@@ -1,7 +1,7 @@
 # Triagegeist — Emergency Triage Acuity Prediction & Demographic Bias Audit
 
 **Competition:** [Triagegeist](https://www.kaggle.com/competitions/triagegeist)  
-**Organizer:** Laitinen-Fredriksson Foundation
+**Organizer:** Laitinen-Fredriksson Foundation  
 **Version:** V1 — Synthetic ED Data + NHAMCS Real-World Validation
 
 ## Overview
