@@ -2,7 +2,6 @@
 
 **Competition:** [Triagegeist](https://www.kaggle.com/competitions/triagegeist)  
 **Organizer:** Laitinen-Fredriksson Foundation
-**Author:** Sadat Tarique
 **Version:** V1 — Synthetic ED Data + NHAMCS Real-World Validation
 
 ## Overview
